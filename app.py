@@ -2,25 +2,22 @@
 import pickle
 import streamlit as st
 import requests
-
+import gdown
 import os
 
 # ----------------------------
 # Download helper for big files
 # ----------------------------
-def download_file(url, filename):
-    """Download file if not present locally."""
+def download_file(file_id, filename):
+    """Download file from Google Drive if not present locally."""
     if not os.path.exists(filename):
         try:
             with st.spinner(f"📥 Downloading {filename} ..."):
-                response = requests.get(url, allow_redirects=True, timeout=30)
-                response.raise_for_status()
-                with open(filename, "wb") as f:
-                    f.write(response.content)
-                st.success(f"{filename} downloaded successfully ✅")
+                url = f"https://drive.google.com/uc?id={file_id}"
+                gdown.download(url, filename, quiet=False)
+            st.success(f"{filename} downloaded successfully ✅")
         except Exception as e:
             st.error(f"❌ Failed to download {filename}: {e}")
-
 
 
 # --- Hybrid Movie Info Fetcher ---
@@ -92,13 +89,12 @@ def recommend(movie):
 # --- Streamlit UI ---
 st.header('🎬 Movie Recommender System')
 
-# ✅ Auto-download big files if missing
-MOVIES_URL = "https://drive.google.com/uc?id=1J-0i_QUX8U73SCWR0hXiROf7l9i_tKAO"
-SIMILARITY_URL = "https://drive.google.com/uc?id=1e5UUGH69RA_Y2vfmhVHNNW54UuaASiPZ"
+MOVIES_ID = "1J-0i_QUX8U73SCWR0hXiROf7l9i_tKAO"
+SIMILARITY_ID = "1e5UUGH69RA_Y2vfmhVHNNW54UuaASiPZ"
 
 
-download_file(MOVIES_URL, "movies.pkl")
-download_file(SIMILARITY_URL, "similarity.pkl")
+download_file(MOVIES_ID, "movies.pkl")
+download_file(SIMILARITY_ID, "similarity.pkl")
 
 
 try:

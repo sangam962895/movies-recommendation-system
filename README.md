@@ -2,7 +2,7 @@
 
 A user-friendly **Streamlit** app that recommends movies using a precomputed similarity matrix and fetches posters, IMDb ratings, and genres dynamically via APIs.
 
-🚀 **Live Demo**: [Click here to try the app](https://movies-recommendation-system.onrender.com)  
+🚀 **Live Demo**: [Click here to try the app](https://movies-recommendation-system-286f.onrender.com)  
 *(hosted on Render)*
 
 ---

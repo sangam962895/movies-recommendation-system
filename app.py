@@ -93,8 +93,9 @@ def recommend(movie):
 st.header('🎬 Movie Recommender System')
 
 # ✅ Auto-download big files if missing
-MOVIES_URL = "https://drive.google.com/file/d/1J-0i_QUX8U73SCWR0hXiROf7l9i_tKAO/view?usp=sharing"
-SIMILARITY_URL = "https://drive.google.com/file/d/1e5UUGH69RA_Y2vfmhVHNNW54UuaASiPZ/view?usp=sharing"
+MOVIES_URL = "https://drive.google.com/uc?id=1J-0i_QUX8U73SCWR0hXiROf7l9i_tKAO"
+SIMILARITY_URL = "https://drive.google.com/uc?id=1e5UUGH69RA_Y2vfmhVHNNW54UuaASiPZ"
+
 
 download_file(MOVIES_URL, "movies.pkl")
 download_file(SIMILARITY_URL, "similarity.pkl")
